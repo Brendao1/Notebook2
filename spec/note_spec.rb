@@ -1,6 +1,6 @@
 require 'note'
 
-describe Note do
+# describe Note do
   describe "#display" do
     it "arranges the note into a title and body" do
       # I am testing @formatter.format(self)
@@ -13,15 +13,16 @@ describe Note do
       expect(n.display).to eq "Title: #{n.title}\n#{n.body}"
     end
   end
+
+
+describe NoteFormatter do
+  describe "#format(note)" do
+    it "adds a title, a new line and body" do
+      formatter = NoteFormatter.new
+      title = "Ferraris"
+      body = "Ferraris are awesome"
+      note_double = double(:title => title, :body => body)
+      expect(formatter.format(note_double)).to eq "Title: #{title}\n#{body}"
+    end
+  end
 end
-
-
-
-# describe NoteFormatter do
-#   describe "#format" do
-#     it "adds a title, a new line and body" do
-#       formatter = NoteFormatter.new
-#       expect(formatter.format(self)).to eq ":)"
-#     end
-#   end
-# end
